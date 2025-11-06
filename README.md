@@ -43,7 +43,25 @@ NewsWebsite/
 
 ## Docker Setup & Usage
 
-### Build the Docker Image
+### Quick Start with Docker Hub (Recommended)
+
+**Pull and run the pre-built image from Docker Hub:**
+
+```bash
+docker pull <your-dockerhub-username>/news-website:latest
+docker run -d -p 8080:80 --name news-app <your-dockerhub-username>/news-website:latest
+```
+
+The website will be accessible at: `http://localhost:8080`
+
+**Or use Docker Compose:**
+
+```bash
+docker compose pull
+docker compose up -d
+```
+
+### Build the Docker Image Locally
 
 ```bash
 docker build -t news-website .
@@ -79,6 +97,36 @@ docker rm news-app
 
 ```bash
 docker logs news-app
+```
+
+## Pushing to Docker Hub
+
+To push this image to Docker Hub for others to use:
+
+1. **Login to Docker Hub:**
+```bash
+docker login
+```
+
+2. **Tag the image with your Docker Hub username:**
+```bash
+docker tag news-website:latest <your-dockerhub-username>/news-website:latest
+```
+
+3. **Push to Docker Hub:**
+```bash
+docker push <your-dockerhub-username>/news-website:latest
+```
+
+4. **Verify on Docker Hub:**
+   - Visit https://hub.docker.com
+   - Your image should be available at `https://hub.docker.com/r/<your-dockerhub-username>/news-website`
+
+**Example:**
+```bash
+docker login
+docker tag news-website:latest myusername/news-website:latest
+docker push myusername/news-website:latest
 ```
 
 ## Local Development (Without Docker)
