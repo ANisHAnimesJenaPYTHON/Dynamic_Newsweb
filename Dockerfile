@@ -1,6 +1,8 @@
 # Use nginx as base image to serve static files
 FROM nginx:alpine
 
+
+
 # Copy website files to nginx html directory
 COPY . /usr/share/nginx/html
 
